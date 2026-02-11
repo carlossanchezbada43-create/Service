@@ -8,7 +8,7 @@
 	function initEmbeddedMessaging() {
 		try {
 			embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
-
+			console.log("Entra en el init del EmbeddedMessaging")
 			embeddedservice_bootstrap.init(
 				'00DJW000001l2KL',
 				'Messaging_Bot',
@@ -22,7 +22,9 @@
 		}
 	};
 </script>
-<script type='text/javascript' src='https://telepizza--telepvass.sandbox.my.site.com/ESWMessagingBot1754588665087/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+<script type='text/javascript' src='https://telepizza--telepvass.sandbox.my.site.com/ESWMessagingBot1754588665087/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'>
+	console.log("Entra en el primero")
+</script>
 
 	</body>
   
