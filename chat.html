@@ -1,36 +1,104 @@
 <html>
   <head>
-  https://telepizza--telepvass.sandbox.my.salesforce.com
-  https://telepizza--telepvass.sandbox.my.salesforce-scrt.com
-  https://d.la12s-core1.sfdc-cehfhs.salesforceliveagent.com
-</head>
+    <meta charset="utf-8" />
+    <title>Telepizza - Demo Chat</title>
+
+    <!-- Estilos para embellecer la página -->
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        background: #ffefe5;
+      }
+
+      /* Pantalla de carga */
+      #loader {
+        position: fixed;
+        inset: 0;
+        background: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        font-size: 20px;
+        color: #333;
+        z-index: 9999;
+      }
+
+      .spinner {
+        border: 6px solid #f3f3f3;
+        border-top: 6px solid #ff3d00;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        animation: spin 1s linear infinite;
+        margin-bottom: 15px;
+      }
+
+      @keyframes spin {
+        to { transform: rotate(360deg); }
+      }
+
+      /* Contenido real (se muestra después del loader) */
+      #content {
+        display: none;
+        padding: 40px;
+        text-align: center;
+      }
+    </style>
+
+    <script>
+      // Oculta el loader después de un pequeño retardo
+      window.addEventListener("load", function() {
+        setTimeout(() => {
+          document.getElementById("loader").style.display = "none";
+          document.getElementById("content").style.display = "block";
+        }, 1800); // 1.8 segundos para darle margen al menú :)
+      });
+    </script>
+  </head>
+
   <body>
+
+    <!-- LOADER -->
+    <div id="loader">
+      <div class="spinner"></div>
+      Cargando Telepizza...
+    </div>
+
+    <!-- CONTENIDO REAL -->
+    <div id="content">
+      <h1>Bienvenido a Telepizza</h1>
+      <p>El menú de ayuda aparecerá en breve.</p>
+    </div>
+
+    <!-- *** AQUÍ TUS SCRIPTS ORIGINALES, SIN CAMBIAR NADA *** -->
     <script type='text/javascript' src='https://telepizza--telepvass.sandbox.my.salesforce.com/embeddedservice/menu/fab.min.js'></script>
-<script type='text/javascript'>
-	var initESW = function(gslbBaseURL) {
-		// Required if you want labels in a language that’s different from your user’s context.
-		//embedded_svc.menu.settings.language = ''; //For example, enter 'en' or 'en-US'
-		embedded_svc.menu.settings.scrt2BaseUrl = 'https://telepizza--telepvass.sandbox.my.salesforce-scrt.com';
+    <script type='text/javascript'>
+      var initESW = function(gslbBaseURL) {
+        embedded_svc.menu.settings.scrt2BaseUrl = 'https://telepizza--telepvass.sandbox.my.salesforce-scrt.com';
 
-		embedded_svc.menu.init(
-			'https://telepizza--telepvass.sandbox.my.salesforce.com',
-			'https://d.la12s-core1.sfdc-cehfhs.salesforceliveagent.com/chat',
-			gslbBaseURL,
-			'00DJW000001l2KL',
-			'Men_de_git'
-		);
-	};
+        embedded_svc.menu.init(
+          'https://telepizza--telepvass.sandbox.my.salesforce.com',
+          'https://d.la12s-core1.sfdc-cehfhs.salesforceliveagent.com/chat',
+          gslbBaseURL,
+          '00DJW000001l2KL',
+          'Men_de_git'
+        );
+      };
 
-	if (!window.embedded_svc || !window.embedded_svc.menu) {
-		var s = document.createElement('script');
-		s.setAttribute('src', 'https://telepizza--telepvass.sandbox.my.salesforce.com/embeddedservice/menu/fab.min.js');
-		s.onload = function() {
-			initESW(null);
-		};
-		document.body.appendChild(s);
-	} else {
-		initESW('https://telepizza--telepvass.sandbox.my.salesforce.com');
-	}
-</script>
+      if (!window.embedded_svc || !window.embedded_svc.menu) {
+        var s = document.createElement('script');
+        s.setAttribute('src', 'https://telepizza--telepvass.sandbox.my.salesforce.com/embeddedservice/menu/fab.min.js');
+        s.onload = function() {
+          initESW(null);
+        };
+        document.body.appendChild(s);
+      } else {
+        initESW('https://telepizza--telepvass.sandbox.my.salesforce.com');
+      }
+    </script>
+
   </body>
 </html>
