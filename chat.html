@@ -1,26 +1,32 @@
 <html>
   <head></head>
   <body>
-    <script>
-      function initESW() {
-        embedded_svc.menu.settings.scrt2BaseUrl =
-          'https://telepizza--telepvass.sandbox.my.salesforce-scrt.com';
+    <script type='text/javascript' src='https://telepizza--telepvass.sandbox.my.salesforce.com/embeddedservice/menu/fab.min.js'></script>
+<script type='text/javascript'>
+	var initESW = function(gslbBaseURL) {
+		// Required if you want labels in a language that’s different from your user’s context.
+		//embedded_svc.menu.settings.language = ''; //For example, enter 'en' or 'en-US'
+		embedded_svc.menu.settings.scrt2BaseUrl = 'https://telepizza--telepvass.sandbox.my.salesforce-scrt.com';
 
-        embedded_svc.menu.init(
-          'https://telepizza--telepvass.sandbox.my.salesforce.com',
-          'https://d.la12s-core1.sfdc-cehfhs.salesforceliveagent.com/chat',
-          null, // gslbBaseURL: deja null salvo que Salesforce te indique otro
-          '00DJW000001l2KL',
-          'Menu_Messaging_Bot'
-        );
-      }
-    </script>
+		embedded_svc.menu.init(
+			'https://telepizza--telepvass.sandbox.my.salesforce.com',
+			'https://d.la12s-core1.sfdc-cehfhs.salesforceliveagent.com/chat',
+			gslbBaseURL,
+			'00DJW000001l2KL',
+			'Menu_Messaging_Bot'
+		);
+	};
 
-    <!-- Carga única del script del Channel Menu -->
-    <script
-      type="text/javascript"
-      src="https://telepizza--telepvass.sandbox.my.salesforce.com/embeddedservice/menu/fab.min.js"
-      onload="initESW()">
-    </script>
+	if (!window.embedded_svc || !window.embedded_svc.menu) {
+		var s = document.createElement('script');
+		s.setAttribute('src', 'https://telepizza--telepvass.sandbox.my.salesforce.com/embeddedservice/menu/fab.min.js');
+		s.onload = function() {
+			initESW(null);
+		};
+		document.body.appendChild(s);
+	} else {
+		initESW('https://telepizza--telepvass.sandbox.my.salesforce.com');
+	}
+</script>
   </body>
 </html>
