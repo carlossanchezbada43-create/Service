@@ -1,42 +1,87 @@
-<html>
-  <head>
-    <style>
-      /* Mover el botón del Channel Menu a la izquierda */
-      .embeddedServiceHelpButton,
-      .embeddedServiceSidebarLayout {
-        left: 20px !important;
-        right: auto !important;
-      }
-    </style>
-  </head>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chat Integrado - Salesforce</title>
 
-  <body>
-    <script type='text/javascript' src='https://telepizza--telepvass.sandbox.my.salesforce.com/embeddedservice/menu/fab.min.js'></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f2f4f7;
+      margin: 0;
+      padding: 0;
+    }
 
-    <script type='text/javascript'>
-      var initESW = function(gslbBaseURL) {
-        embedded_svc.menu.settings.language = 'es';
-        embedded_svc.menu.settings.scrt2BaseUrl = 'https://telepizza--telepvass.sandbox.my.salesforce-scrt.com';
+    header {
+      background: #006dcc;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
 
-        embedded_svc.menu.init(
-          'https://telepizza--telepvass.sandbox.my.salesforce.com',
-          'https://d.la12s-core1.sfdc-cehfhs.salesforceliveagent.com/chat',
-          gslbBaseURL,
-          '00DJW000001l2KL',
-          'Canal_Prueba'
-        );
+    main {
+      max-width: 900px;
+      margin: 40px auto;
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    h1 {
+      margin-bottom: 10px;
+    }
+
+    p {
+      color: #444;
+      font-size: 1.1rem;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>Demo del Canal de Atención</h1>
+  </header>
+
+  <main>
+    <h2>Chat de Salesforce Embedded Service</h2>
+    <p>
+      Haz clic en el botón flotante de la esquina inferior para iniciar el chat.
+    </p>
+  </main>
+
+  <!-- Script del menú flotante de Salesforce -->
+  <script type="text/javascript" src="https://telepizza--telepvass.sandbox.my.salesforce.com/embeddedservice/menu/fab.min.js"></script>
+
+  <script type="text/javascript">
+    var initESW = function(gslbBaseURL) {
+      embedded_svc.menu.settings.language = 'es';
+      embedded_svc.menu.settings.scrt2BaseUrl = 'https://telepizza--telepvass.sandbox.my.salesforce-scrt.com';
+
+      embedded_svc.menu.init(
+        'https://telepizza--telepvass.sandbox.my.salesforce.com',
+        'https://d.la12s-core1.sfdc-cehfhs.salesforceliveagent.com/chat',
+        gslbBaseURL,
+        '00DJW000001l2KL',
+        'Canal_Prueba'
+      );
+    };
+
+    if (!window.embedded_svc || !window.embedded_svc.menu) {
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://telepizza--telepvass.sandbox.my.salesforce.com/embeddedservice/menu/fab.min.js');
+      s.onload = function() {
+        initESW(null);
       };
+      document.body.appendChild(s);
+    } else {
+      initESW('https://telepizza--telepvass.sandbox.my.salesforce.com');
+    }
+  </script>
 
-      if (!window.embedded_svc || !window.embedded_svc.menu) {
-        var s = document.createElement('script');
-        s.setAttribute('src', 'https://telepizza--telepvass.sandbox.my.salesforce.com/embeddedservice/menu/fab.min.js');
-        s.onload = function() {
-          initESW(null);
-        };
-        document.body.appendChild(s);
-      } else {
-        initESW('https://telepizza--telepvass.sandbox.my.salesforce.com');
-      }
-    </script>
-  </body>
+</body>
 </html>
